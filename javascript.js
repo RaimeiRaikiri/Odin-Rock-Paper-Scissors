@@ -1,6 +1,3 @@
-let humanScore = 0
-let computerScore = 0
-
 function getComputerChoice()
 {
     switch (Math.floor(Math.random() * 3)) {
@@ -16,6 +13,7 @@ function getComputerChoice()
 }
 function getHumanChoice()
 {
+    // Take user input and make it case insensitive
     let move = prompt("Declare your move! Rock, paper or scissors").toLowerCase()
     switch (move)
     {
@@ -43,36 +41,71 @@ function playRound(humanChoice, computerChoice)
     else if (humanChoice === 'rock' && computerChoice === 'paper')
     {
         console.log('You lose this round, computer chose paper')
-        computerScore++
+        return -1
     }
     else if (humanChoice === 'rock' && computerChoice === 'scissors')
     {
         console.log('You win this round! Computer chose scissors')
-        humanScore++
+        return 1
     }
     else if (humanChoice === 'scissors' && computerChoice === 'rock')
     {
         console.log('You lose this round, computer chose rock')
-        computerScore++
+        return -1
     }
     else if (humanChoice === 'scissors' && computerChoice === 'paper')
     {
         console.log('You win this round! Computer chose paper')
-        humanScore++
+        return 1
     }
     else if (humanChoice === 'paper' && computerChoice === 'scissors')
     {
         console.log('You lose this round, computer chose scissors')
-        computerScore++
+        return -1
     }
     else if (humanChoice === 'paper' && computerChoice === 'rock')
     {
         console.log('You win this round! Computer chose rock')
-        humanScore++
+        return 1
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame()
+{
+    let computerScore = 0
+    let humanScore = 0
+    
+    let rounds = 5
+    // Complete 5 rounds of the game
+    for (let i = 0; i < rounds; i++)
+    {
+        // Take a different input from computer and human each iteration
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        
+        let scoreIncreaseOrDecrease = 0
+        
+        // Determines the winner, loser of a round or the case of a draw
+       
+        scoreIncreaseOrDecrease = playRound(humanSelection, computerSelection);  
+        if (scoreIncreaseOrDecrease === 1)
+        {
+            humanScore++
+        } 
+        else if (scoreIncreaseOrDecrease === -1)
+        {
+            computerScore++
+        }
+        else
+        {
+            // If there is a draw increase the number of rounds to determine winner or loser of 5 rounds
+            rounds++
+        }
+    }
 
-playRound(humanSelection, computerSelection);
+    console.log('Human score is: ' + humanScore)
+    console.log('Computer score is: ' + computerScore)
+
+}
+
+playGame()
