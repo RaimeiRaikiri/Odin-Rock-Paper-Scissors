@@ -15,7 +15,9 @@ function getComputerChoice()
         
 let humanWins = 0
 let computerWins = 0
-        
+const winLoseDiv = document.createElement('div');
+let disableGame = false;
+
 const rockButton = document.createElement('button');
 rockButton.textContent = 'Rock';
         
@@ -35,14 +37,14 @@ const buttonsDiv = document.querySelector('#buttons');
 buttonsDiv.appendChild(rockButton);
 buttonsDiv.appendChild(scissorsButton);
 buttonsDiv.appendChild(paperButton);
-        
-rockButton.addEventListener('click', () => playRound('rock', getComputerChoice()));
-scissorsButton.addEventListener('click', () => playRound('scissors', getComputerChoice()));
-paperButton.addEventListener('click', () => playRound('paper', getComputerChoice()));
+
+rockButton.addEventListener('click', () => playRound('rock', getComputerChoice(),disableGame));
+scissorsButton.addEventListener('click', () => playRound('scissors', getComputerChoice(),disableGame));
+paperButton.addEventListener('click', () => playRound('paper', getComputerChoice(),disableGame));
 
 function createWinLossScreen (humanWins)
 {
-    const winLoseDiv = document.createElement('div');
+    disableGame = true
     winLoseDiv.style.cssText = 
     `display: flex;
     flex-direction:column;
@@ -65,7 +67,9 @@ function createWinLossScreen (humanWins)
 
     const playAgainButton = document.createElement('button');
     playAgainButton.textContent = 'Play Again?';
-    playAgainButton.style.cssText = 'width:8vw; height: 8vh;'
+    playAgainButton.style.cssText = 'width:8vw; height: 8vh;';
+    playAgainButton.classList.add('.child');
+    playAgainButton.addEventListener('click', ()=> resetGame())
 
     winLoseDiv.appendChild(winLoseHeading);
     winLoseDiv.appendChild(winLoseText);
@@ -78,12 +82,25 @@ function createWinLossScreen (humanWins)
     }
     else
     {
-        winLoseHeading.textContent = 'Winner!';
-        winLoseText.textContent = "Congratulation you beat the computer!";
+        winLoseHeading.textContent = 'Loser!';
+        winLoseText.textContent = "Congratulation you lost to the computer!";
         document.body.appendChild(winLoseDiv);
     }
 }
 
+function resetGame(){
+    humanWins = 0;
+    computerWins = 0;
+    humanScore.textContent = 'Human Score: ' + humanWins;
+    computerScore.textContent = 'Computer Score: ' + computerWins;
+
+    while (winLoseDiv.firstChild) 
+        {
+            winLoseDiv.removeChild(winLoseDiv.firstChild);
+        }
+    document.body.removeChild(winLoseDiv);
+    disableGame = false;
+}
 function winner() {
     if (humanWins === 5 || computerWins === 5)
         {
@@ -98,79 +115,86 @@ function winner() {
             }
         }
 
-function playRound(humanChoice, computerChoice)
+function playRound(humanChoice, computerChoice, disableGame)
 {
-    if (humanChoice == 'incorrect' || computerChoice == 'Not Working')
+    if (disableGame)
     {
-        results.textContent = 'Something went wrong try again'
-        humanScore.textContent = 'Human Score: ' + humanWins;
-        computerScore.textContent = 'Computer Score: ' + computerWins;
-        winner();
-    }
-    else if (humanChoice === computerChoice)
-    {
-        results.textContent = 'You drew with the computer'
-        humanScore.textContent = 'Human Score: ' + humanWins;
-        computerScore.textContent = 'Computer Score: ' + computerWins;
-        winner();
 
     }
-    else if (humanChoice === 'rock' && computerChoice === 'paper')
+    else
     {
-        results.textContent = 'You lose this round, computer chose paper'
-        computerWins += 1;
-        humanScore.textContent = 'Human Score: ' + humanWins;
-        computerScore.textContent = 'Computer Score: ' + computerWins;
-        winner();
+        if (humanChoice == 'incorrect' || computerChoice == 'Not Working')
+        {
+            results.textContent = 'Something went wrong try again'
+            humanScore.textContent = 'Human Score: ' + humanWins;
+            computerScore.textContent = 'Computer Score: ' + computerWins;
+            winner();
+        }
+        else if (humanChoice === computerChoice)
+        {
+            results.textContent = 'You drew with the computer'
+            humanScore.textContent = 'Human Score: ' + humanWins;
+            computerScore.textContent = 'Computer Score: ' + computerWins;
+            winner();
+
+        }
+        else if (humanChoice === 'rock' && computerChoice === 'paper')
+        {
+            results.textContent = 'You lose this round, computer chose paper'
+            computerWins += 1;
+            humanScore.textContent = 'Human Score: ' + humanWins;
+            computerScore.textContent = 'Computer Score: ' + computerWins;
+            winner();
 
 
-    }
-    else if (humanChoice === 'rock' && computerChoice === 'scissors')
-    {
-        results.textContent = 'You win this round! Computer chose scissors'
-        humanWins += 1;
-        humanScore.textContent = 'Human Score: ' + humanWins;
-        computerScore.textContent = 'Computer Score: ' + computerWins;
-        winner();
+        }
+        else if (humanChoice === 'rock' && computerChoice === 'scissors')
+        {
+            results.textContent = 'You win this round! Computer chose scissors'
+            humanWins += 1;
+            humanScore.textContent = 'Human Score: ' + humanWins;
+            computerScore.textContent = 'Computer Score: ' + computerWins;
+            winner();
 
-    }
-    else if (humanChoice === 'scissors' && computerChoice === 'rock')
-    {
-        results.textContent = 'You lose this round, computer chose rock'
-        computerWins += 1;
-        humanScore.textContent = 'Human Score: ' + humanWins;
-        computerScore.textContent = 'Computer Score: ' + computerWins;
-        winner();
-
-
-    }
-    else if (humanChoice === 'scissors' && computerChoice === 'paper')
-    {
-        results.textContent = 'You win this round! Computer chose paper'
-        humanWins += 1;
-        humanScore.textContent = 'Human Score: ' + humanWins;
-        computerScore.textContent = 'Computer Score: ' + computerWins;
-        winner();
+        }
+        else if (humanChoice === 'scissors' && computerChoice === 'rock')
+        {
+            results.textContent = 'You lose this round, computer chose rock'
+            computerWins += 1;
+            humanScore.textContent = 'Human Score: ' + humanWins;
+            computerScore.textContent = 'Computer Score: ' + computerWins;
+            winner();
 
 
-    }
-    else if (humanChoice === 'paper' && computerChoice === 'scissors')
-    {
-        results.textContent = 'You lose this round, computer chose scissors'
-        computerWins += 1;
-        humanScore.textContent = 'Human Score: ' + humanWins;
-        computerScore.textContent = 'Computer Score: ' + computerWins;
-        winner();
+        }
+        else if (humanChoice === 'scissors' && computerChoice === 'paper')
+        {
+            results.textContent = 'You win this round! Computer chose paper'
+            humanWins += 1;
+            humanScore.textContent = 'Human Score: ' + humanWins;
+            computerScore.textContent = 'Computer Score: ' + computerWins;
+            winner();
 
 
-    }
-    else if (humanChoice === 'paper' && computerChoice === 'rock')
-    {
-        results.textContent = 'You win this round! Computer chose rock'
-        humanWins += 1;
-        humanScore.textContent = 'Human Score: ' + humanWins;
-        computerScore.textContent = 'Computer Score: ' + computerWins;
-        winner();
+        }
+        else if (humanChoice === 'paper' && computerChoice === 'scissors')
+        {
+            results.textContent = 'You lose this round, computer chose scissors'
+            computerWins += 1;
+            humanScore.textContent = 'Human Score: ' + humanWins;
+            computerScore.textContent = 'Computer Score: ' + computerWins;
+            winner();
 
+
+        }
+        else if (humanChoice === 'paper' && computerChoice === 'rock')
+        {
+            results.textContent = 'You win this round! Computer chose rock'
+            humanWins += 1;
+            humanScore.textContent = 'Human Score: ' + humanWins;
+            computerScore.textContent = 'Computer Score: ' + computerWins;
+            winner();
+
+        }
     }
 }
