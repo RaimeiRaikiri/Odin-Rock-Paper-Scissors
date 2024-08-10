@@ -15,9 +15,21 @@ header {
     width: 100vw;
     height: 20vh;
 }
+
+#Results {
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#Results>h2 {
+    margin-bottom: 5vh;
+}
 #running-scores {
     width: 80vw;
-    height: 20vh;
+    height: 10vh;
     margin-left: 10vw;
     margin-right: 10vw;
     
