@@ -11,22 +11,7 @@ function getComputerChoice()
             return 'Not Working'
     }
 }
-function getHumanChoice()
-{
-    // Take user input and make it case insensitive
-    let move = prompt("Declare your move! Rock, paper or scissors").toLowerCase()
-    switch (move)
-    {
-        case 'rock':
-            return 'rock'
-        case 'scissors':
-            return 'scissors'
-        case 'paper':
-            return 'paper'
-            default:
-                return 'incorrect'
-            }
-}
+
         
 let humanWins = 0
 let computerWins = 0
