@@ -45,11 +45,11 @@ const humanScore = document.querySelector('.human');
 const computerScore = document.querySelector('.computer');
 const resultsDiv = document.querySelector('#Results');
 const results =  document.querySelector('#Results>p');
+const buttonsDiv = document.querySelector('#buttons');
 
-
-document.body.appendChild(rockButton);
-document.body.appendChild(scissorsButton);
-document.body.appendChild(paperButton);
+buttonsDiv.appendChild(rockButton);
+buttonsDiv.appendChild(scissorsButton);
+buttonsDiv.appendChild(paperButton);
         
 rockButton.addEventListener('click', () => playRound('rock', getComputerChoice()));
 scissorsButton.addEventListener('click', () => playRound('scissors', getComputerChoice()));
