@@ -40,22 +40,60 @@ rockButton.addEventListener('click', () => playRound('rock', getComputerChoice()
 scissorsButton.addEventListener('click', () => playRound('scissors', getComputerChoice()));
 paperButton.addEventListener('click', () => playRound('paper', getComputerChoice()));
 
+function createWinLossScreen (humanWins)
+{
+    const winLoseDiv = document.createElement('div');
+    winLoseDiv.style.cssText = 
+    `display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 25vw;
+    top: 25vh; 
+    width: 50vw; 
+    height: 50vh; 
+    background-color:black;
+    border-radius: 12px;
+    z-index:1`;
+
+    const winLoseHeading = document.createElement('h1');
+    winLoseHeading.style.cssText = `color: white; margin-bottom: 5vh;`;
+
+    const winLoseText = document.createElement('p');
+    winLoseText.style.cssText = `color:white; margin-bottom: 5vh`;
+
+    const playAgainButton = document.createElement('button');
+    playAgainButton.textContent = 'Play Again?';
+    playAgainButton.style.cssText = 'width:8vw; height: 8vh;'
+
+    winLoseDiv.appendChild(winLoseHeading);
+    winLoseDiv.appendChild(winLoseText);
+    winLoseDiv.appendChild(playAgainButton)
+
+    if (humanWins) {
+        winLoseHeading.textContent = 'Winner!';
+        winLoseText.textContent = "Congratulation you beat the computer!";
+        document.body.appendChild(winLoseDiv);
+    }
+    else
+    {
+        winLoseHeading.textContent = 'Winner!';
+        winLoseText.textContent = "Congratulation you beat the computer!";
+        document.body.appendChild(winLoseDiv);
+    }
+}
+
 function winner() {
     if (humanWins === 5 || computerWins === 5)
         {
-            resultsDiv.appendChild(runningScores);
-
             if (humanWins === 5)
                 {
-                    const finalWinner = document.createElement('p');
-                    finalWinner.textContent = 'Final winner is the human';
-                    resultsDiv.appendChild(finalWinner);
+                    createWinLossScreen(true);
                 }
             else
                 {
-                    const finalWinner = document.createElement('p');
-                    finalWinner.textContent = 'Final winner is the computer';
-                    resultsDiv.appendChild(finalWinner);
+                   createWinLossScreen(false);
                 }
             }
         }
