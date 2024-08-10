@@ -40,12 +40,12 @@ scissorsButton.textContent = 'Scissors';
 const paperButton = document.createElement('button');
 paperButton.textContent = 'Paper';
 
-const runningScores = document.createElement('div');
-        
-const resultsDiv = document.createElement('div');
+const runningScores = document.querySelector('#running-scores');
+const humanScore = document.querySelector('.human');
+const computerScore = document.querySelector('.computer');
+const resultsDiv = document.querySelector('#Results');
 
-document.body.appendChild(resultsDiv);
-document.body.appendChild(runningScores);
+
 document.body.appendChild(rockButton);
 document.body.appendChild(scissorsButton);
 document.body.appendChild(paperButton);
@@ -79,13 +79,15 @@ function playRound(humanChoice, computerChoice)
     if (humanChoice == 'incorrect' || computerChoice == 'Not Working')
     {
         resultsDiv.textContent = 'Something went wrong try again'
-        runningScores.textContent = 'Human Score: ' + humanWins + ' Computer Score: ' + computerWins;
+        humanScore.textContent = 'Human Score: ' + humanWins;
+        computerScore.textContent = 'Computer Score: ' + computerWins;
         winner();
     }
     else if (humanChoice === computerChoice)
     {
         resultsDiv.textContent = 'You drew with the computer'
-        runningScores.textContent = 'Human Score: ' + humanWins + ' Computer Score: ' + computerWins;
+        humanScore.textContent = 'Human Score: ' + humanWins;
+        computerScore.textContent = 'Computer Score: ' + computerWins;
         winner();
 
     }
@@ -93,7 +95,8 @@ function playRound(humanChoice, computerChoice)
     {
         resultsDiv.textContent = 'You lose this round, computer chose paper'
         computerWins += 1;
-        runningScores.textContent = 'Human Score: ' + humanWins + ' Computer Score: ' + computerWins;
+        humanScore.textContent = 'Human Score: ' + humanWins;
+        computerScore.textContent = 'Computer Score: ' + computerWins;
         winner();
 
 
@@ -102,7 +105,8 @@ function playRound(humanChoice, computerChoice)
     {
         resultsDiv.textContent = 'You win this round! Computer chose scissors'
         humanWins += 1;
-        runningScores.textContent = 'Human Score: ' + humanWins + ' Computer Score: ' + computerWins;
+        humanScore.textContent = 'Human Score: ' + humanWins;
+        computerScore.textContent = 'Computer Score: ' + computerWins;
         winner();
 
     }
@@ -110,7 +114,8 @@ function playRound(humanChoice, computerChoice)
     {
         resultsDiv.textContent = 'You lose this round, computer chose rock'
         computerWins += 1;
-        runningScores.textContent = 'Human Score: ' + humanWins + ' Computer Score: ' + computerWins;
+        humanScore.textContent = 'Human Score: ' + humanWins;
+        computerScore.textContent = 'Computer Score: ' + computerWins;
         winner();
 
 
@@ -119,7 +124,8 @@ function playRound(humanChoice, computerChoice)
     {
         resultsDiv.textContent = 'You win this round! Computer chose paper'
         humanWins += 1;
-        runningScores.textContent = 'Human Score: ' + humanWins + ' Computer Score: ' + computerWins;
+        humanScore.textContent = 'Human Score: ' + humanWins;
+        computerScore.textContent = 'Computer Score: ' + computerWins;
         winner();
 
 
@@ -128,7 +134,8 @@ function playRound(humanChoice, computerChoice)
     {
         resultsDiv.textContent = 'You lose this round, computer chose scissors'
         computerWins += 1;
-        runningScores.textContent = 'Human Score: ' + humanWins + ' Computer Score: ' + computerWins;
+        humanScore.textContent = 'Human Score: ' + humanWins;
+        computerScore.textContent = 'Computer Score: ' + computerWins;
         winner();
 
 
@@ -137,7 +144,8 @@ function playRound(humanChoice, computerChoice)
     {
         resultsDiv.textContent = 'You win this round! Computer chose rock'
         humanWins += 1;
-        runningScores.textContent = 'Human Score: ' + humanWins + ' Computer Score: ' + computerWins;
+        humanScore.textContent = 'Human Score: ' + humanWins;
+        computerScore.textContent = 'Computer Score: ' + computerWins;
         winner();
 
     }
