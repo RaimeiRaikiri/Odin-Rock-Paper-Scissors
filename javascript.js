@@ -35,8 +35,8 @@ const results =  document.querySelector('#Results>p');
 const buttonsDiv = document.querySelector('#buttons');
 
 buttonsDiv.appendChild(rockButton);
-buttonsDiv.appendChild(scissorsButton);
 buttonsDiv.appendChild(paperButton);
+buttonsDiv.appendChild(scissorsButton);
 
 rockButton.addEventListener('click', () => playRound('rock', getComputerChoice(),disableGame));
 scissorsButton.addEventListener('click', () => playRound('scissors', getComputerChoice(),disableGame));
