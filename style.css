@@ -58,9 +58,11 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  
+  /* change to button size for all devices that aren't average phone width*/
 
-  width: 10vw;
-  height: 10vh;
+  width: 8rem;
+  height: 8rem;
 }
 
 button:before {
