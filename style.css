@@ -114,3 +114,18 @@ button:after {
   top: 0;
   border-radius: 10px;
 }
+/* For moblie scaling */
+@media screen and (max-width: 480px) {
+  #buttons{
+    flex-direction: column;
+    height:40vh;
+  }
+  button {
+    width: 8rem;
+    height: 8rem;
+    margin-top: 20px;
+  }
+  button:after {
+    text-align: center;
+  }
+}
