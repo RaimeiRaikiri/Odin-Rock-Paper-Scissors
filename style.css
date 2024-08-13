@@ -131,3 +131,11 @@ button:after {
     text-align: center;
   }
 }
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 100vw;
+  margin-top: 10vh;
+}
