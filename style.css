@@ -130,6 +130,9 @@ button:after {
   button:after {
     text-align: center;
   }
+  footer {
+    display: none;
+  }
 }
 footer {
   display: flex;
