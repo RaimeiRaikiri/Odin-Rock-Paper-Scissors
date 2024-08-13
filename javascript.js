@@ -16,6 +16,7 @@ function getComputerChoice()
 let humanWins = 0
 let computerWins = 0
 const winLoseDiv = document.createElement('div');
+winLoseDiv.setAttribute('id', 'winLoseDiv');
 let disableGame = false;
 
 const rockButton = document.createElement('button');
@@ -67,8 +68,8 @@ function createWinLossScreen (humanWins)
 
     const playAgainButton = document.createElement('button');
     playAgainButton.textContent = 'Play Again?';
+    playAgainButton.setAttribute('id', 'playAgain')
     playAgainButton.style.cssText = 'width:8vw; height: 8vh;';
-    playAgainButton.classList.add('.child');
     playAgainButton.addEventListener('click', ()=> resetGame())
 
     winLoseDiv.appendChild(winLoseHeading);
