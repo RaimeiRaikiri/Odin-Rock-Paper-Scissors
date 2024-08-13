@@ -123,7 +123,7 @@ button:after {
     height:40vh;
   }
   button {
-    width: 8rem;
+    width: 10rem;
     height: 8rem;
     margin-top: 20px;
   }
@@ -132,6 +132,18 @@ button:after {
   }
   footer {
     display: none;
+  }
+}
+@media screen and (max-height: 650px) {
+  button {
+    width: 8rem;
+    height: 6rem;
+  }
+}
+@media screen and (max-height: 480px) {
+  button {
+    width: 6rem;
+    height: 2.5rem;
   }
 }
 footer {
