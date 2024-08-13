@@ -117,7 +117,8 @@ button:after {
   border-radius: 10px;
 }
 #playAgain {
-  width: 8rem !important;
+  width: 8rem;
+  height: 8vh;
 }
 
 /* For moblie scaling */
@@ -141,15 +142,15 @@ button:after {
 /* Preventing the end screen from becoming squished at most sizes */
 @media screen and (max-width: 650px) {
   #winLoseDiv {
-    width: 80vw !important;
-    left: 10vw !important;
+    width: 80vw;
+    left: 10vw;
   }
 }
 @media screen and (min-width:651px)
 {
   #winLoseDiv {
-    width: 60vw !important;
-    left: 20vw !important;
+    width: 60vw ;
+    left: 20vw ;
   }
 }
 
