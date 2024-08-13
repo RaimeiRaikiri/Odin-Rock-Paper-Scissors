@@ -52,9 +52,7 @@ function createWinLossScreen (humanWins)
     justify-content: center;
     align-items: center;
     position: fixed;
-    left: 25vw;
     top: 25vh; 
-    width: 50vw; 
     height: 50vh; 
     background-color:black;
     border-radius: 12px;
@@ -69,9 +67,8 @@ function createWinLossScreen (humanWins)
     const playAgainButton = document.createElement('button');
     playAgainButton.textContent = 'Play Again?';
     playAgainButton.setAttribute('id', 'playAgain')
-    playAgainButton.style.cssText = 'width:8vw; height: 8vh;';
     playAgainButton.addEventListener('click', ()=> resetGame())
-
+    
     winLoseDiv.appendChild(winLoseHeading);
     winLoseDiv.appendChild(winLoseText);
     winLoseDiv.appendChild(playAgainButton)
